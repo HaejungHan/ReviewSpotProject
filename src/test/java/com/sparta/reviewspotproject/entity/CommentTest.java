@@ -16,8 +16,7 @@ public class CommentTest {
 
     Post post = new Post();
 
-    CommentRequestDto requestDto = new CommentRequestDto();
-    requestDto.setContents("댓글의 내용입니다.");
+    CommentRequestDto requestDto = new CommentRequestDto("댓글의 내용입니다.");
 
     // when
     Comment comment = new Comment(requestDto, post, user);
@@ -30,8 +29,6 @@ public class CommentTest {
 
   }
 
-
-
   @Test
   @DisplayName("댓글 update 메서드 테스트")
   public void updateTest() {
@@ -40,12 +37,10 @@ public class CommentTest {
 
     Post post = new Post();
 
-    CommentRequestDto updateRequestDto = new CommentRequestDto();
-    updateRequestDto.setContents("댓글의 내용을 변경합니다.");
+    CommentRequestDto updateRequestDto = new CommentRequestDto("댓글의 내용을 변경합니다.");
 
     // when
-    CommentRequestDto requestDto = new CommentRequestDto();
-    requestDto.setContents("원래의 댓글 내용입니다.");
+    CommentRequestDto requestDto = new CommentRequestDto("원래의 댓글 내용입니다.");
     Comment originalComment = new Comment(requestDto, post, user);
 
     originalComment.update(updateRequestDto);

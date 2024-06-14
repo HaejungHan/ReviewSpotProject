@@ -15,9 +15,7 @@ public class PostTest {
     // given
     User user = new User();
 
-    PostRequestDto requestDto = new PostRequestDto();
-    requestDto.setTitle("게시물의 제목입니다.");
-    requestDto.setContents("게시물의 내용입니다.");
+    PostRequestDto requestDto = new PostRequestDto("게시물의 제목입니다.","게시물의 내용입니다.");
 
     // when
     Post post = new Post(requestDto, user);
@@ -36,14 +34,10 @@ public class PostTest {
     // given
     User user = new User();
 
-    PostRequestDto updateRequestDto = new PostRequestDto();
-    updateRequestDto.setTitle("게시물의 제목을 변경합니다.");
-    updateRequestDto.setContents("게시물의 내용을 변경합니다.");
+    PostRequestDto updateRequestDto = new PostRequestDto("게시물의 제목을 변경합니다.", "게시물의 내용을 변경합니다.");
 
     // when
-    PostRequestDto requestDto = new PostRequestDto();
-    requestDto.setTitle("원래의 게시물 제목 입니다.");
-    requestDto.setContents("원래의 게시물 내용 입니다.");
+    PostRequestDto requestDto = new PostRequestDto("원래의 게시물 제목 입니다.", "원래의 게시물 내용 입니다.");
     Post originalPost = new Post(requestDto, user);
 
     originalPost.update(updateRequestDto);
