@@ -27,7 +27,7 @@ public class CommentService {
         Post post = findPostById(postId);
         Comment comment = new Comment(requestDto, post, user);
         Comment savedComment = commentRepository.save(comment);
-        return new CommentResponseDto(comment);
+        return new CommentResponseDto(post, comment);
     }
 
     // 댓글 수정

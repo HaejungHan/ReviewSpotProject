@@ -44,7 +44,7 @@ public class PostService {
         if (post.getUser().getId() != user.getId()) {
             throw new IllegalArgumentException("게시물 작성자가 아니므로 수정할 수 없습니다.");
         }
-        post.update(postRequestDto, user);
+        post.update(postRequestDto);
         return new PostResponseDto(post);
     }
 
