@@ -29,11 +29,5 @@ public class SignupRequestDto {
     @NotBlank(message = "Email을 입력해주세요.")
     private String email;
 
-    public SignupRequestDto(String userId, String password, String userName, String email) {
-        this.userId = userId;
-        this.password = password;
-        this.userName = userName;
-        this.email = email;
-    }
 }
 

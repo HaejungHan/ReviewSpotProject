@@ -12,9 +12,5 @@ public class PostRequestDto {
     @NotBlank
     private String contents;
 
-    public PostRequestDto(String title, String contents){
-        this.title = title;
-        this.contents = contents;
-    }
 
 }

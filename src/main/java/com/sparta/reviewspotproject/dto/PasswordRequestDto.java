@@ -19,8 +19,4 @@ public class PasswordRequestDto {
     )
     private String changePassword;
 
-    public PasswordRequestDto(String password, String changePassword){
-        this.password = password;
-        this.changePassword = changePassword;
-    }
 }

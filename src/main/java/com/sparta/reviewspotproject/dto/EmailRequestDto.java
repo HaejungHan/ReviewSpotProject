@@ -12,7 +12,4 @@ public class EmailRequestDto {
     @NotBlank(message = "Email을 입력해주세요.")
     private String email;
 
-    public EmailRequestDto(String email) {
-        this.email = email;
-    }
 }
