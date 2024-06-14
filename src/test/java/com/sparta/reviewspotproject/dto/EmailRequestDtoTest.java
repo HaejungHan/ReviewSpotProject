@@ -27,7 +27,8 @@ public class EmailRequestDtoTest {
   @DisplayName("유효한 이메일이 아닌 경우 validation 테스트")
   public void validation1Test() {
     // given
-    EmailRequestDto requestDto = new EmailRequestDto("emailvalidation");
+    EmailRequestDto requestDto = new EmailRequestDto();
+    requestDto.setEmail("emailvalidation");
 
     // when
     Set<ConstraintViolation<EmailRequestDto>> violations = validator.validate(requestDto);
@@ -38,10 +39,11 @@ public class EmailRequestDtoTest {
   }
 
   @Test
-  @DisplayName("이메일 주소를 입력하지 않은 경우 validation 테스트")
+  @DisplayName("이메일을 입력하지 않은 경우 validation 테스트")
   public void validation2Test() {
     // given
-    EmailRequestDto requestDto = new EmailRequestDto("");
+    EmailRequestDto requestDto = new EmailRequestDto();
+    requestDto.setEmail("");
 
     // when
     Set<ConstraintViolation<EmailRequestDto>> violations = validator.validate(requestDto);
@@ -55,7 +57,8 @@ public class EmailRequestDtoTest {
   @DisplayName("유효한 이메일을 입력한 경우 validation 테스트")
   public void validation3Test() {
     // given
-    EmailRequestDto requestDto = new EmailRequestDto("validation@gmail.com");
+    EmailRequestDto requestDto = new EmailRequestDto();
+    requestDto.setEmail("validation@gmail.com");
 
     // when
     Set<ConstraintViolation<EmailRequestDto>> violations = validator.validate(requestDto);

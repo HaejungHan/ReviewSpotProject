@@ -27,7 +27,9 @@ public class VerifyCodeRequestDtoTest {
   @DisplayName("유효한 이메일이 아닌 경우 validation 테스트")
   public void validation1Test() {
     // given
-    VerifyCodeRequestDto requestDto = new VerifyCodeRequestDto("email","123456");
+    VerifyCodeRequestDto requestDto = new VerifyCodeRequestDto();
+    requestDto.setEmail("email");
+    requestDto.setVerificationCode("123456");
 
     // when
     Set<ConstraintViolation<VerifyCodeRequestDto>> violations = validator.validate(requestDto);
@@ -41,7 +43,9 @@ public class VerifyCodeRequestDtoTest {
   @DisplayName("이메일 주소를 입력하지 않은 경우 validation 테스트")
   public void validation2Test() {
     // given
-    VerifyCodeRequestDto requestDto = new VerifyCodeRequestDto("","123456");
+    VerifyCodeRequestDto requestDto = new VerifyCodeRequestDto();
+    requestDto.setEmail("");
+    requestDto.setVerificationCode("123456");
 
     // when
     Set<ConstraintViolation<VerifyCodeRequestDto>> violations = validator.validate(requestDto);
@@ -55,7 +59,9 @@ public class VerifyCodeRequestDtoTest {
   @DisplayName("인증코드를 입력하지 않은 경우 validation 테스트")
   public void validation3Test() {
     // given
-    VerifyCodeRequestDto requestDto = new VerifyCodeRequestDto("validaion@gmail.com","");
+    VerifyCodeRequestDto requestDto = new VerifyCodeRequestDto();
+    requestDto.setEmail("validaion@gmail.com");
+    requestDto.setVerificationCode("");
 
     // when
     Set<ConstraintViolation<VerifyCodeRequestDto>> violations = validator.validate(requestDto);
@@ -69,7 +75,9 @@ public class VerifyCodeRequestDtoTest {
   @DisplayName("유효한 이메일, 인증코드를 정확히 입력한 경우 validation 테스트")
   public void validation4Test() {
     // given
-    VerifyCodeRequestDto requestDto = new VerifyCodeRequestDto("validation@gmail.com", "123456");
+    VerifyCodeRequestDto requestDto = new VerifyCodeRequestDto();
+    requestDto.setEmail("validation@gmail.com");
+    requestDto.setVerificationCode("123456");
 
     // when
     Set<ConstraintViolation<VerifyCodeRequestDto>> violations = validator.validate(requestDto);

@@ -27,7 +27,8 @@ public class CommentRequestDtoTest {
   @DisplayName("댓글의 내용이 비어있는 경우 validation 테스트")
   public void validation1Test() {
     // given
-    CommentRequestDto requestDto = new CommentRequestDto("");
+    CommentRequestDto requestDto = new CommentRequestDto();
+    requestDto.setContents("");
 
     // when
     Set<ConstraintViolation<CommentRequestDto>> violations = validator.validate(requestDto);
@@ -42,7 +43,8 @@ public class CommentRequestDtoTest {
   @DisplayName("댓글의 내용이 있는 경우 validation 테스트")
   public void validation2Test() {
     // given
-    CommentRequestDto requestDto = new CommentRequestDto("댓글의 내용입니다.");
+    CommentRequestDto requestDto = new CommentRequestDto();
+    requestDto.setContents("댓글의 내용입니다.");
 
     // when
     Set<ConstraintViolation<CommentRequestDto>> violations = validator.validate(requestDto);

@@ -27,7 +27,9 @@ public class PostRequestDtoTest {
   @DisplayName("게시물의 제목과 내용이 비어있는 경우 validation 테스트")
   public void validation1Test() {
     // given
-    PostRequestDto requestDto = new PostRequestDto("", "");
+    PostRequestDto requestDto = new PostRequestDto();
+    requestDto.setTitle("");
+    requestDto.setContents("");
 
     // when
     Set<ConstraintViolation<PostRequestDto>> violations = validator.validate(requestDto);
@@ -42,7 +44,9 @@ public class PostRequestDtoTest {
   @DisplayName("게시물의 제목과 내용이 있는 경우 validation 테스트")
   public void validation2Test() {
     // given
-    PostRequestDto requestDto = new PostRequestDto("게시물의 제목입니다.", "게시물의 내용입니다.");
+    PostRequestDto requestDto = new PostRequestDto();
+    requestDto.setTitle("게시물의 제목입니다.");
+    requestDto.setContents("게시물의 내용입니다.");
 
     // when
     Set<ConstraintViolation<PostRequestDto>> violations = validator.validate(requestDto);

@@ -28,7 +28,9 @@ public class PasswordRequestDtoTest {
   @DisplayName("비밀번호를 입력하지 않은 경우 validation 테스트")
   public void validation1Test() {
     // given
-    PasswordRequestDto requestDto = new PasswordRequestDto("", "");
+    PasswordRequestDto requestDto = new PasswordRequestDto();
+    requestDto.setPassword("");
+    requestDto.setChangePassword("");
 
     // when
     Set<ConstraintViolation<PasswordRequestDto>> violations = validator.validate(requestDto);
@@ -43,7 +45,9 @@ public class PasswordRequestDtoTest {
   @DisplayName("현재 비밀번호가 정규식 표현에 맞지 않은경우 validation 테스트")
   public void validation2Test() {
     // given
-    PasswordRequestDto requestDto = new PasswordRequestDto("@hh1234", "@hhanni12345");
+    PasswordRequestDto requestDto = new PasswordRequestDto();
+    requestDto.setPassword("@hh1234");
+    requestDto.setChangePassword("@hhanni12345");
 
     // when
     Set<ConstraintViolation<PasswordRequestDto>> violations = validator.validate(requestDto);
@@ -58,7 +62,9 @@ public class PasswordRequestDtoTest {
   @DisplayName("변경할 비밀번호가 정규식 표현에 맞지 않은경우 validation 테스트")
   public void validation3Test() {
     // given
-    PasswordRequestDto requestDto = new PasswordRequestDto("@hhanni12345", "hhanni1");
+    PasswordRequestDto requestDto = new PasswordRequestDto();
+    requestDto.setPassword("@hhanni12345");
+    requestDto.setChangePassword("hhanni1");
 
     // when
     Set<ConstraintViolation<PasswordRequestDto>> violations = validator.validate(requestDto);
@@ -73,7 +79,9 @@ public class PasswordRequestDtoTest {
   @DisplayName("비밀번호가 정규식 표현에 맞게 입력된 경우 validation 테스트")
   public void validation4Test() {
     // given
-    PasswordRequestDto requestDto = new PasswordRequestDto("@hhanni12345", "@hhanni456789");
+    PasswordRequestDto requestDto = new PasswordRequestDto();
+    requestDto.setPassword("@hhanni12345");
+    requestDto.setChangePassword("@hhanni456789");
 
     // when
     Set<ConstraintViolation<PasswordRequestDto>> violations = validator.validate(requestDto);
