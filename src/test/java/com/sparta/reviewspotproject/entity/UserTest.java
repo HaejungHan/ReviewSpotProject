@@ -35,7 +35,9 @@ public class UserTest {
   @DisplayName("사용자의 프로필 update 메서드 테스트")
   public void updateTest() {
     // given
-    ProfileRequestDto requestDto = new ProfileRequestDto("요니와하니", "만나서 반갑습니다. 여러분");
+    ProfileRequestDto requestDto = new ProfileRequestDto();
+    requestDto.setUserName("요니와하니");
+    requestDto.setTagLine("만나서 반갑습니다. 여러분");
 
     // when
     User user = new User("haniyoni1234", "@haniandyoni1234", "하니와요니", "hhanni0705@gmail.com",
