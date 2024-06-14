@@ -9,4 +9,9 @@ import lombok.Setter;
 public class CommentRequestDto {
     @NotBlank(message = "내용을 입력해주세요.")
     private String contents;
+
+    public CommentRequestDto(String contents){
+        this.contents = contents;
+    }
+
 }
