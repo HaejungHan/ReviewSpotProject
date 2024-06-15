@@ -38,7 +38,7 @@ public class PostService {
 
     //게시글 수정
     @Transactional
-    public PostResponseDto update(Long postId, PostRequestDto postRequestDto, User user) {
+    public PostResponseDto updatePost(Long postId, PostRequestDto postRequestDto, User user) {
         findPost(postId);
         Post post = postRepository.findById(postId).get();
         if (post.getUser().getId() != user.getId()) {
@@ -49,7 +49,7 @@ public class PostService {
     }
 
     //게시글 수정
-    public void delete(Long postId, User user) {
+    public void deletePost(Long postId, User user) {
         findPost(postId);
         Post post = postRepository.findById(postId).get();
         if (post.getUser().getId() != user.getId()) {
