@@ -93,7 +93,7 @@ class PostControllerMvcTest {
     responseDto.setPostId(1L);
     responseDto.setTitle(requestDto.getTitle());
     responseDto.setContents(requestDto.getContents());
-    responseDto.setCreateAt(LocalDateTime.now());
+    responseDto.setCreatedAt(LocalDateTime.now());
     responseDto.setModifiedAt(LocalDateTime.now());
 
     when(postService.createPost(ArgumentMatchers.any(PostRequestDto.class),
@@ -122,6 +122,10 @@ class PostControllerMvcTest {
     requestDto.setTitle("");
     requestDto.setContents("게시물 내용");
 
+    PostResponseDto responseDto = new PostResponseDto();
+    responseDto.setTitle(requestDto.getTitle());
+    responseDto.setContents(requestDto.getContents());
+
     // when - then
     mvc.perform(post("/api/posts")
             .contentType(MediaType.APPLICATION_JSON)
@@ -139,6 +143,10 @@ class PostControllerMvcTest {
     PostRequestDto requestDto = new PostRequestDto();
     requestDto.setTitle("게시물 제목");
     requestDto.setContents("");
+
+    PostResponseDto responseDto = new PostResponseDto();
+    responseDto.setTitle(requestDto.getTitle());
+    responseDto.setContents(requestDto.getContents());
 
     // when - then
     mvc.perform(post("/api/posts")
@@ -159,7 +167,7 @@ class PostControllerMvcTest {
     responseDto.setPostId(postId);
     responseDto.setTitle("게시글 제목");
     responseDto.setContents("게시글 내용");
-    responseDto.setCreateAt(LocalDateTime.now());
+    responseDto.setCreatedAt(LocalDateTime.now());
     responseDto.setModifiedAt(LocalDateTime.now());
 
     when(postService.getPost(postId)).thenReturn(responseDto);
@@ -183,7 +191,7 @@ class PostControllerMvcTest {
     PostResponseDto responseDto = new PostResponseDto();
     responseDto.setTitle("게시글 제목");
     responseDto.setContents("게시글 내용");
-    responseDto.setCreateAt(LocalDateTime.now());
+    responseDto.setCreatedAt(LocalDateTime.now());
     responseDto.setModifiedAt(LocalDateTime.now());
 
     when(postService.getPost(postId)).thenReturn(responseDto);
@@ -203,14 +211,14 @@ class PostControllerMvcTest {
     responseDto1.setPostId(1L);
     responseDto1.setTitle("게시글 제목1");
     responseDto1.setContents("게시글 내용1");
-    responseDto1.setCreateAt(LocalDateTime.now());
+    responseDto1.setCreatedAt(LocalDateTime.now());
     responseDto1.setModifiedAt(LocalDateTime.now());
 
     PostResponseDto responseDto2 = new PostResponseDto();
     responseDto2.setPostId(2L);
     responseDto2.setTitle("게시글 제목2");
     responseDto2.setContents("게시글 내용2");
-    responseDto2.setCreateAt(LocalDateTime.now());
+    responseDto2.setCreatedAt(LocalDateTime.now());
     responseDto2.setModifiedAt(LocalDateTime.now());
 
     List<PostResponseDto> postResponseDtoList = Arrays.asList(responseDto1, responseDto2);
@@ -259,7 +267,7 @@ class PostControllerMvcTest {
     responseDto.setPostId(postId);
     responseDto.setTitle(requestDto.getTitle());
     responseDto.setContents(requestDto.getContents());
-    responseDto.setCreateAt(LocalDateTime.now());
+    responseDto.setCreatedAt(LocalDateTime.now());
     responseDto.setModifiedAt(LocalDateTime.now());
 
     when(postService.updatePost(ArgumentMatchers.eq(postId), ArgumentMatchers.any(PostRequestDto.class),
@@ -294,7 +302,7 @@ class PostControllerMvcTest {
     responseDto.setPostId(postId);
     responseDto.setTitle(requestDto.getTitle());
     responseDto.setContents(requestDto.getContents());
-    responseDto.setCreateAt(LocalDateTime.now());
+    responseDto.setCreatedAt(LocalDateTime.now());
     responseDto.setModifiedAt(LocalDateTime.now());
 
     when(postService.updatePost(ArgumentMatchers.eq(postId), ArgumentMatchers.any(PostRequestDto.class),
@@ -326,7 +334,7 @@ class PostControllerMvcTest {
     responseDto.setPostId(postId);
     responseDto.setTitle(requestDto.getTitle());
     responseDto.setContents(requestDto.getContents());
-    responseDto.setCreateAt(LocalDateTime.now());
+    responseDto.setCreatedAt(LocalDateTime.now());
     responseDto.setModifiedAt(LocalDateTime.now());
 
     when(postService.updatePost(ArgumentMatchers.eq(postId), ArgumentMatchers.any(PostRequestDto.class),
