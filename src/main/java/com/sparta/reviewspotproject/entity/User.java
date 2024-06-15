@@ -63,6 +63,5 @@ public class User {
     public void update(ProfileRequestDto requestDto) {
         this.userName = requestDto.getUserName();
         this.tagLine = requestDto.getTagLine();
-        this.modifiedAt = LocalDateTime.now();
     }
 }
