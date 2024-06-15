@@ -27,7 +27,7 @@ public class CommentService {
         Post post = findPostById(postId);
         Comment comment = new Comment(requestDto, post, user);
         Comment savedComment = commentRepository.save(comment);
-        return new CommentResponseDto(post, comment);
+        return new CommentResponseDto(comment);
     }
 
     // 댓글 수정
@@ -41,11 +41,10 @@ public class CommentService {
     }
 
     // 댓글 삭제
-    public ResponseEntity<String> deleteComment(Long id, User user) {
+    public void deleteComment(Long id, User user) {
         Comment comment = findCommentById(id);
         if (comment.getUser().getId() == user.getId()) {
             commentRepository.delete(comment);
-            return ResponseEntity.ok("댓글이 삭제되었습니다.");
         } else throw new IllegalArgumentException("본인이 작성한 댓글만 삭제할 수 있습니다.");
     }
 

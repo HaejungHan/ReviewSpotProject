@@ -7,9 +7,9 @@ import lombok.Setter;
 @Setter
 @Getter
 public class PostRequestDto {
-    @NotBlank
+    @NotBlank(message = "게시물의 제목을 입력해주세요.")
     private String title;
-    @NotBlank
+    @NotBlank(message = "게시물의 내용을 입력해주세요.")
     private String contents;
 
 
