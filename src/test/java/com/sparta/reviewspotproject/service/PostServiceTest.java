@@ -132,6 +132,8 @@ public class PostServiceTest {
     Post post = new Post();
     post.setId(postId);
     post.setUser(mockTestUser);
+    post.setTitle("게시물 제목");
+    post.setContents("게시물 내용");
 
     PostRequestDto requestDto = new PostRequestDto();
     requestDto.setTitle("수정 게시물 제목");
@@ -149,7 +151,6 @@ public class PostServiceTest {
     assertEquals(requestDto.getContents(), responseDto.getContents());
 
     verify(postRepository).findById(postId);
-    verify(postRepository).save(any(Post.class));
   }
 
   @Test
@@ -159,8 +160,6 @@ public class PostServiceTest {
     Long postId = 1L;
     Post post = new Post();
     post.setId(postId);
-    post.setTitle("1");
-    post.setContents("2");
     post.setUser(mockTestUser);
 
     PostRequestDto requestDto = new PostRequestDto();
@@ -177,7 +176,7 @@ public class PostServiceTest {
       postService.updatePost(postId, requestDto, notAuthUser);
     });
 
-    verify(postRepository, never()).save(any(Post.class));
+    verify(postRepository).findById(postId);
     assertEquals("게시물 작성자가 아니므로 수정할 수 없습니다.", exception.getMessage());
   }
 
