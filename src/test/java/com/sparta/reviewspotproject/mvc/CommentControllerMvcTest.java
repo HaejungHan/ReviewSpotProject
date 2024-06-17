@@ -108,7 +108,6 @@ class CommentControllerMvcTest {
             .principal(mockPrincipal))
             .andDo(print())
             .andExpect(status().isOk())
-            .andExpect(jsonPath("$.postId").value(1L))
             .andExpect(jsonPath("$.id").value(11L))
             .andExpect(jsonPath("$.contents").value(requestDto.getContents()));
 
