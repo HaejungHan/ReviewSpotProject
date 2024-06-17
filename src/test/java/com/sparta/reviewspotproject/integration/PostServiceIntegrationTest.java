@@ -45,7 +45,7 @@ public class PostServiceIntegrationTest {
   @BeforeEach
   public void setUpTestUser() {
     currentUser = new User();
-    currentUser.setUserId("12345");
+    currentUser.setUserId("abcdefg12345");
     currentUser.setPassword(passwordEncoder.encode("password@1234"));
     currentUser.setUserName("하니와요니");
     currentUser.setEmail("user@gmail.com");
