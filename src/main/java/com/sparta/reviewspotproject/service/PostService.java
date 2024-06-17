@@ -19,15 +19,13 @@ public class PostService {
 
     //게시글 작성
     public PostResponseDto createPost(PostRequestDto postRequestDto, User user) {
-        Post post = new Post(postRequestDto, user);
-        Post savePost = postRepository.save(post);
-        return new PostResponseDto(savePost);
+        Post post = postRepository.save(new Post(postRequestDto, user));
+        return new PostResponseDto(post);
     }
 
     //게시글 조회
     public PostResponseDto getPost(Long id) {
-        Post post = postRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("게시물을 찾을 수 없습니다."));
+        Post post = findPost(id);
         return new PostResponseDto(post);
     }
 
@@ -38,20 +36,18 @@ public class PostService {
 
     //게시글 수정
     @Transactional
-    public PostResponseDto update(Long postId, PostRequestDto postRequestDto, User user) {
-        findPost(postId);
-        Post post = postRepository.findById(postId).get();
+    public PostResponseDto updatePost(Long postId, PostRequestDto postRequestDto, User user) {
+        Post post = findPost(postId);
         if (post.getUser().getId() != user.getId()) {
             throw new IllegalArgumentException("게시물 작성자가 아니므로 수정할 수 없습니다.");
         }
-        post.update(postRequestDto, user);
+        post.update(postRequestDto);
         return new PostResponseDto(post);
     }
 
-    //게시글 수정
-    public void delete(Long postId, User user) {
-        findPost(postId);
-        Post post = postRepository.findById(postId).get();
+    //게시글 삭제
+    public void deletePost(Long postId, User user) {
+        Post post = findPost(postId);
         if (post.getUser().getId() != user.getId()) {
             throw new IllegalArgumentException("게시물 작성자가 아니므로 삭제할 수 없습니다.");
         }

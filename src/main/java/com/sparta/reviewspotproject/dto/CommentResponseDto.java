@@ -1,11 +1,16 @@
 package com.sparta.reviewspotproject.dto;
 
 import com.sparta.reviewspotproject.entity.Comment;
+import com.sparta.reviewspotproject.entity.Post;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
+@Setter
+@NoArgsConstructor
 public class CommentResponseDto {
     private Long id;
     private String contents;

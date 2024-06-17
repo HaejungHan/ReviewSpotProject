@@ -41,10 +41,6 @@ public class Post extends Timestamped {
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments;
 
-    public Post(PostRequestDto postRequestDto) {
-        this.contents = postRequestDto.getContents();
-        this.title = postRequestDto.getTitle();
-    }
 
     public Post(PostRequestDto postRequestDto, User user) {
         this.contents = postRequestDto.getContents();
@@ -53,9 +49,8 @@ public class Post extends Timestamped {
         this.postLikesCount = 0;
     }
 
-    public void update(PostRequestDto postRequestDto, User user) {
+    public void update(PostRequestDto postRequestDto) {
         this.title = postRequestDto.getTitle();
         this.contents = postRequestDto.getContents();
-        this.user = user;
     }
 }
