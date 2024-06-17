@@ -23,6 +23,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
+@Transactional
 public class PostServiceIntegrationTest {
   @Autowired
   private UserService userService;
@@ -53,13 +54,11 @@ public class PostServiceIntegrationTest {
   }
 
   @AfterEach
-  @Transactional
   public void cleanUpTestUser() {
     userRepository.delete(currentUser);
   }
 
   @Test
-  @Transactional
   @DisplayName("게시물 작성 통합 테스트")
   public void createPost() {
     // given
@@ -76,7 +75,6 @@ public class PostServiceIntegrationTest {
   }
 
   @Test
-  @Transactional
   @DisplayName("선택 게시물 조회 통합 테스트")
   public void getPost() {
     // given
@@ -95,7 +93,6 @@ public class PostServiceIntegrationTest {
   }
 
   @Test
-  @Transactional
   @DisplayName("게시물 수정 통합 테스트")
   public void updatePost() {
     // given
@@ -117,7 +114,6 @@ public class PostServiceIntegrationTest {
   }
 
   @Test
-  @Transactional
   @DisplayName("게시물 수정 통합 실패테스트 - 게시물 작성자와 다를때")
   public void updatePost_Fail() {
     // given
@@ -145,7 +141,6 @@ public class PostServiceIntegrationTest {
   }
 
   @Test
-  @Transactional
   @DisplayName("게시물 삭제 통합테스트")
   public void deletePost() {
     // given
@@ -163,7 +158,6 @@ public class PostServiceIntegrationTest {
   }
 
   @Test
-  @Transactional
   @DisplayName("게시물 삭제 통합 실패테스트 - 게시물 작성자와 다를때")
   public void deletePost_Fail() {
     // given
@@ -187,7 +181,6 @@ public class PostServiceIntegrationTest {
   }
 
   @Test
-  @Transactional
   @DisplayName("전체 게시물 조회 통합테스트")
   public void getPosts() {
     postRepository.deleteAll();
